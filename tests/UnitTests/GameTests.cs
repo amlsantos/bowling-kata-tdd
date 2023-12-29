@@ -19,5 +19,17 @@ public class GameTests
         framesCount.Should().Be(10);
     }
 
+    [Fact]
+    public void FrameHas1orMoreRolls()
+    {
+        // arrange
+        var game = new Game();
 
+        // act
+        var rollsCount = game.RollsNumber();
+
+        // assert 
+        rollsCount.Should().BeGreaterThan(10);
+        rollsCount.Should().BeLessThan(20);
+    }
 }
