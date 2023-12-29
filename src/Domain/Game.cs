@@ -46,15 +46,13 @@ public class Game
             if (frame.IsSpare())
             {
                 var nextFrame = Frames[i+1];
-                var bonus = nextFrame.GetScore(0);
-                score += bonus;
+                score += nextFrame.GetSpareBonus();
             }
 
             if (frame.IsStrike())
             {
                 var nextFrame = Frames[i+1];
-                var bonus = nextFrame.GetScore();
-                score += bonus;
+                score += nextFrame.GetStrikeBonus();
             }
         }
 

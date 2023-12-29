@@ -46,9 +46,19 @@ public class Frame
         return Rolls[0].Pin + Rolls[1].Pin;
     }
 
-    public int GetScore(int roolIndex)
+    private int GetScore(int roolIndex)
     {
         return Rolls[roolIndex].Pin;
+    }
+
+    public int GetSpareBonus()
+    {
+        return GetScore(0);
+    }
+
+    public int GetStrikeBonus()
+    {
+        return GetScore();
     }
 
     public bool IsFinished()
