@@ -2,11 +2,16 @@
 
 public class Game
 {
-    public int Frames { get; init; }
+    private const int FramesCount = 10;
+    private Frame[] Frames { get; init; }
 
     public Game()
     {
-        Frames = 10;
+        Frames = new Frame[FramesCount];
     }
 
+    public int FramesNumber()
+    {
+        return Frames.Length;
+    }
 }

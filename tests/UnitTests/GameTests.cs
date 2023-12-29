@@ -13,9 +13,11 @@ public class GameTests
         var game = new Game();
 
         // act
-        var framesCount = game.Frames;
+        var framesCount = game.FramesNumber();
 
         // assert
         framesCount.Should().Be(10);
     }
+
+
 }
