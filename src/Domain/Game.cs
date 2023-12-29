@@ -43,19 +43,27 @@ public class Game
             var frame = Frames[i];
             score += frame.GetScore();
 
+            if (IsLastFrame(i))
+                continue;
+
             if (frame.IsSpare())
             {
-                var nextFrame = Frames[i+1];
+                var nextFrame = Frames[i + 1];
                 score += nextFrame.GetSpareBonus();
             }
 
             if (frame.IsStrike())
             {
-                var nextFrame = Frames[i+1];
+                var nextFrame = Frames[i + 1];
                 score += nextFrame.GetStrikeBonus();
             }
         }
 
         return score;
+    }
+
+    private bool IsLastFrame(int frameIndex)
+    {
+        return frameIndex == 9;
     }
 }

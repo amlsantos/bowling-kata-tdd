@@ -110,11 +110,6 @@ public class GameTests
         _game.Score().Should().Be(24);
     }
 
-    private void RollStrike()
-    {
-        _game.Roll(10);
-    }
-
     private void RollsMany(int framesCount, int pins)
     {
         for (var frameIndex = 0; frameIndex < framesCount; frameIndex++)
@@ -123,4 +118,9 @@ public class GameTests
             _game.Roll(pins);
         }
     }
+
+    private void RollStrike()
+    {
+        _game.Roll(10);
+    }    
 }
