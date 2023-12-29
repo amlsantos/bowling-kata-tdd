@@ -95,6 +95,9 @@ public class GameTests
         _game.Roll(secondRoll);
     }
 
+
+
+
     private void RollsMany(int framesCount, int pins)
     {
         for (var frameIndex = 0; frameIndex < framesCount; frameIndex++)

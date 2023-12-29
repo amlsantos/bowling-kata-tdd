@@ -33,7 +33,6 @@ public class Game
 
         if (frame.IsFinished())
             frameIndex +=1;
-        
     }
 
     public int Score()

@@ -6,7 +6,7 @@ public class Frame
     private int remainingPins = 10;
     public Roll[] Rolls { get; init; }
 
-    private int rollIndex = 0;
+    private int currentPlay = 0;
 
     public Frame()
     {
@@ -15,14 +15,14 @@ public class Frame
 
     public void Rool(int pins)
     {
-        if (rollIndex == 0)
+        if (currentPlay == 0)
             RoolFirst(pins);
-        else if (rollIndex == 1)
+        else if (currentPlay == 1)
             RollSecond(pins);
         else
             throw new InvalidOperationException("Invalid roll index");
 
-        rollIndex += 1;
+        currentPlay += 1;
     }
 
     private void RoolFirst(int pins)
@@ -33,6 +33,9 @@ public class Frame
 
     private void RollSecond(int pins)
     {
+        if (remainingPins == 0)
+            return;
+
         Rolls[1].Play(pins);
         remainingPins -= pins;
     }
@@ -49,11 +52,16 @@ public class Frame
 
     public bool IsFinished()
     {
-        return rollIndex > 1;
+        return currentPlay > 1 || remainingPins == 0;
     }
 
     public bool IsSpare()
     {
         return IsFinished() && remainingPins == 0;
+    }
+
+    public bool IsStrike()
+    {
+        return remainingPins == 0 && (Rolls[0].Pin == 10 || Rolls[1].Pin == 10);
     }
 }
