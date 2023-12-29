@@ -22,13 +22,15 @@ public class Frame
         else
             throw new InvalidOperationException("Invalid roll index");
 
-        currentPlay += 1;
+        remainingPins -= pins;
+
+        if (remainingPins != 0)
+            currentPlay += 1;
     }
 
     private void RoolFirst(int pins)
     {
         Rolls[0].Play(pins);
-        remainingPins -= pins;
     }
 
     private void RollSecond(int pins)
@@ -37,7 +39,6 @@ public class Frame
             return;
 
         Rolls[1].Play(pins);
-        remainingPins -= pins;
     }
 
     public int GetScore()
@@ -57,7 +58,7 @@ public class Frame
 
     public bool IsSpare()
     {
-        return IsFinished() && remainingPins == 0;
+        return IsFinished() && remainingPins == 0 && !IsStrike();
     }
 
     public bool IsStrike()

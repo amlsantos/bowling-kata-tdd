@@ -95,7 +95,20 @@ public class GameTests
         _game.Roll(secondRoll);
     }
 
+    [Fact]
+    public void Roll_OneStrike_Returns16Score()
+    {
+        // arrange
+        // act
+        _game.Roll(10);
+        _game.Roll(3);
+        _game.Roll(4);
 
+        RollsMany(framesCount: 8, pins: 0);
+
+        // assert
+        _game.Score().Should().Be(24);
+    }
 
 
     private void RollsMany(int framesCount, int pins)
