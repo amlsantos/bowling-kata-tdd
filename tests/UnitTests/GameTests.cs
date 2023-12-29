@@ -37,7 +37,7 @@ public class GameTests
     }
 
     [Fact]
-    public void TestAllZeros()
+    public void Roll_With0Pins_Returns0Score()
     {
         // arrange
         // act
@@ -48,11 +48,28 @@ public class GameTests
     }
 
     [Fact]
-    public void TestAllOnes()
+    public void Roll_With1PinEachPlay_Returns20Score()
     {
         // arrange
         // act
         RollsMany(framesCount: 10, pins: 1);
+
+        // assert
+        _game.Score().Should().Be(20);
+
+    }
+
+    [Fact]
+    public void Roll_OneSpare_Returns20Score()
+    {
+        // arrange
+        // act
+        _game.Roll(7);
+        _game.Roll(3);  // spare
+        _game.Roll(4);
+        _game.Roll(2);
+
+        RollsMany(framesCount: 8, pins: 0);
 
         // assert
         _game.Score().Should().Be(20);
