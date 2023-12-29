@@ -31,6 +31,6 @@ public class Game
 
     public int Score()
     {
-        return -1;
+        return 0;
     }
 }
