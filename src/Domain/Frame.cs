@@ -20,7 +20,7 @@ public class Frame
         else if (currentPlay == 1)
             RollSecond(pins);
         else
-            throw new InvalidOperationException("Invalid roll index");
+            throw new InvalidOperationException($"Invalid roll index: {currentPlay}");
 
         remainingPins -= pins;
 
@@ -63,7 +63,12 @@ public class Frame
 
     public bool IsFinished()
     {
-        return currentPlay > 1 || remainingPins == 0;
+        return AlreadyPlayed2Times() || remainingPins == 0;
+    }
+
+    private bool AlreadyPlayed2Times()
+    {
+        return currentPlay > 1;
     }
 
     public bool IsSpare()
