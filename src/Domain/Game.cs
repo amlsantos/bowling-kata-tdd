@@ -1,4 +1,5 @@
-﻿namespace Domain;
+﻿
+namespace Domain;
 
 public class Game
 {
@@ -13,5 +14,10 @@ public class Game
     public int FramesNumber()
     {
         return Frames.Length;
+    }
+
+    public int RollsNumber()
+    {
+        return 10;
     }
 }

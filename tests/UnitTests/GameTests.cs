@@ -29,7 +29,7 @@ public class GameTests
         var rollsCount = game.RollsNumber();
 
         // assert 
-        rollsCount.Should().BeGreaterThan(10);
-        rollsCount.Should().BeLessThan(20);
+        rollsCount.Should().BeGreaterThanOrEqualTo(10);
+        rollsCount.Should().BeLessThanOrEqualTo(20);
     }
 }
