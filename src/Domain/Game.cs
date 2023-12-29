@@ -8,7 +8,8 @@ public class Game
 
     public Game()
     {
-        Frames = new Frame[FramesCount];
+        Frames = new Frame[FramesCount] 
+        { new(), new(), new(), new(), new(), new(), new(), new(), new(), new() };
     }
 
     public int FramesNumber()
@@ -18,6 +19,8 @@ public class Game
 
     public int RollsNumber()
     {
-        return 10;
+        return Frames
+        .Select(f => f.Rolls.Length)
+        .Sum();
     }
 }
