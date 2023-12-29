@@ -75,6 +75,22 @@ public class GameTests
         _game.Score().Should().Be(20);
     }
 
+    [Fact]
+    public void Roll_OneSpare_Returns16Score()
+    {
+        // arrange
+        // act
+        _game.Roll(5);
+        _game.Roll(5);  // spare
+        _game.Roll(3);
+        _game.Roll(0);
+
+        RollsMany(framesCount: 8, pins: 0);
+
+        // assert
+        _game.Score().Should().Be(16);
+    }
+
     private void RollsMany(int framesCount, int pins)
     {
         for (var frameIndex = 0; frameIndex < framesCount; frameIndex++)

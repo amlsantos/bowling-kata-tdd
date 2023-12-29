@@ -3,7 +3,8 @@ namespace Domain;
 public class Frame
 {
     private const int RollsCount = 2;
-    public Roll[] Rolls {get; init;}
+    private int remainingPins = 10;
+    public Roll[] Rolls { get; init; }
 
     private int rollIndex = 0;
 
@@ -20,27 +21,39 @@ public class Frame
             RollSecond(pins);
         else
             throw new InvalidOperationException("Invalid roll index");
-        
-        rollIndex +=1;        
+
+        rollIndex += 1;
     }
 
     private void RoolFirst(int pins)
     {
         Rolls[0].Pin = pins;
+        remainingPins -= pins;
     }
 
     private void RollSecond(int pins)
     {
         Rolls[1].Pin = pins;
+        remainingPins -= pins;
     }
 
-    public int GetTotalScore()
+    public int GetScore()
     {
         return Rolls[0].Pin + Rolls[1].Pin;
+    }
+
+    public int GetScore(int roolIndex)
+    {
+        return Rolls[roolIndex].Pin;
     }
 
     public bool IsFinished()
     {
         return rollIndex > 1;
+    }
+
+    public bool IsSpare()
+    {
+        return IsFinished() && remainingPins == 0;
     }
 }

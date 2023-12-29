@@ -38,8 +38,20 @@ public class Game
 
     public int Score()
     {
-        return Frames
-        .Select(f => f.GetTotalScore())
-        .Sum();
+        var score = 0;
+        for(var i=0; i<FramesCount; i++)
+        {
+            var frame = Frames[i];
+            score += frame.GetScore();
+
+            if (frame.IsSpare())
+            {
+                var nextFrame = Frames[i+1];
+                var bonus = nextFrame.GetScore(0);
+                score += bonus;
+            }
+        }
+
+        return score;
     }
 }
