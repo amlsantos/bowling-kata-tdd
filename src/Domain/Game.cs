@@ -4,7 +4,9 @@ namespace Domain;
 public class Game
 {
     private const int FramesCount = 10;
-    private Frame[] Frames { get; init; }
+    private int currentFrame = 0;
+
+    private Frame[] Frames { get; init; }    
 
     public Game()
     {
@@ -26,11 +28,18 @@ public class Game
 
     public void Roll(int numberOfPins)
     {
+        var frame = Frames[currentFrame];
+        frame.Rool(numberOfPins);
 
+        if (frame.IsFinished())
+            currentFrame +=1;
+        
     }
 
     public int Score()
     {
-        return 0;
+        return Frames
+        .Select(f => f.GetTotalScore())
+        .Sum();
     }
 }

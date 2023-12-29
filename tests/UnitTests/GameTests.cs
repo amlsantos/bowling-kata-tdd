@@ -40,15 +40,30 @@ public class GameTests
     public void TestAllZeros()
     {
         // arrange
-        var framesCount = 10;
-
         // act
-        for(var frameIndex=0; frameIndex<framesCount; frameIndex++)
-        {
-            _game.Roll(0);
-        }
+        RollsMany(framesCount: 10, pins: 0);
 
         // assert
         _game.Score().Should().Be(0);
+    }
+
+    [Fact]
+    public void TestAllOnes()
+    {
+        // arrange
+        // act
+        RollsMany(framesCount: 10, pins: 1);
+
+        // assert
+        _game.Score().Should().Be(20);
+    }
+
+    private void RollsMany(int framesCount, int pins)
+    {
+        for (var frameIndex = 0; frameIndex < framesCount; frameIndex++)
+        {
+            _game.Roll(pins);
+            _game.Roll(pins);
+        }
     }
 }
