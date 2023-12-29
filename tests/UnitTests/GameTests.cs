@@ -64,8 +64,7 @@ public class GameTests
     {
         // arrange
         // act
-        _game.Roll(7);
-        _game.Roll(3);  // spare
+        RollSpare(7, 3);
         _game.Roll(4);
         _game.Roll(2);
 
@@ -80,8 +79,7 @@ public class GameTests
     {
         // arrange
         // act
-        _game.Roll(5);
-        _game.Roll(5);  // spare
+        RollSpare(5, 5);
         _game.Roll(3);
         _game.Roll(0);
 
@@ -89,6 +87,12 @@ public class GameTests
 
         // assert
         _game.Score().Should().Be(16);
+    }
+
+    private void RollSpare(int firstRoll, int secondRoll)
+    {
+        _game.Roll(firstRoll);
+        _game.Roll(secondRoll);
     }
 
     private void RollsMany(int framesCount, int pins)

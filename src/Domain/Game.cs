@@ -3,14 +3,14 @@ namespace Domain;
 
 public class Game
 {
-    private const int FramesCount = 10;
-    private int currentFrame = 0;
+    private const int MaxFrames = 10;
+    private int frameIndex = 0;
 
     private Frame[] Frames { get; init; }    
 
     public Game()
     {
-        Frames = new Frame[FramesCount] 
+        Frames = new Frame[MaxFrames] 
         { new(), new(), new(), new(), new(), new(), new(), new(), new(), new() };
     }
 
@@ -28,18 +28,18 @@ public class Game
 
     public void Roll(int numberOfPins)
     {
-        var frame = Frames[currentFrame];
+        var frame = Frames[frameIndex];
         frame.Rool(numberOfPins);
 
         if (frame.IsFinished())
-            currentFrame +=1;
+            frameIndex +=1;
         
     }
 
     public int Score()
     {
         var score = 0;
-        for(var i=0; i<FramesCount; i++)
+        for(var i=0; i<MaxFrames; i++)
         {
             var frame = Frames[i];
             score += frame.GetScore();

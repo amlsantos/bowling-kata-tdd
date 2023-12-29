@@ -27,13 +27,13 @@ public class Frame
 
     private void RoolFirst(int pins)
     {
-        Rolls[0].Pin = pins;
+        Rolls[0].Play(pins);
         remainingPins -= pins;
     }
 
     private void RollSecond(int pins)
     {
-        Rolls[1].Pin = pins;
+        Rolls[1].Play(pins);
         remainingPins -= pins;
     }
 
