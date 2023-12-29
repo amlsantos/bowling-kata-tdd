@@ -26,10 +26,27 @@ public class GameTests
         var game = new Game();
 
         // act
-        var rollsCount = game.RollsNumber();
+        var totalNumberRolls = game.TotalNumberRolls();
 
         // assert 
-        rollsCount.Should().BeGreaterThanOrEqualTo(10);
-        rollsCount.Should().BeLessThanOrEqualTo(20);
+        totalNumberRolls.Should().BeGreaterThanOrEqualTo(10);
+        totalNumberRolls.Should().BeLessThanOrEqualTo(20);
+    }
+
+    [Fact]
+    public void TestAllZeros()
+    {
+        // arrange
+        var game = new Game();
+        var framesCount = 10;
+
+        // act
+        for(var frameIndex=0; frameIndex<framesCount; frameIndex++)
+        {
+            game.Roll(0);
+        }
+
+        // assert
+        game.Score().Should().Be(0);
     }
 }
