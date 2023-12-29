@@ -6,14 +6,19 @@ namespace UnitTests;
 
 public class GameTests
 {
+    private readonly Game _game;
+
+    public GameTests()
+    {
+        _game = new Game();
+    }
+
     [Fact]
     public void FrameCount_ShouldBe10()
     {
         // arrange
-        var game = new Game();
-
         // act
-        var framesCount = game.FramesNumber();
+        var framesCount = _game.FramesNumber();
 
         // assert
         framesCount.Should().Be(10);
@@ -23,10 +28,8 @@ public class GameTests
     public void FrameHas1orMoreRolls()
     {
         // arrange
-        var game = new Game();
-
         // act
-        var totalNumberRolls = game.TotalNumberRolls();
+        var totalNumberRolls = _game.TotalNumberRolls();
 
         // assert 
         totalNumberRolls.Should().BeGreaterThanOrEqualTo(10);
@@ -37,16 +40,15 @@ public class GameTests
     public void TestAllZeros()
     {
         // arrange
-        var game = new Game();
         var framesCount = 10;
 
         // act
         for(var frameIndex=0; frameIndex<framesCount; frameIndex++)
         {
-            game.Roll(0);
+            _game.Roll(0);
         }
 
         // assert
-        game.Score().Should().Be(0);
+        _game.Score().Should().Be(0);
     }
 }
