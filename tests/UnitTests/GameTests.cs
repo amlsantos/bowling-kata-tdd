@@ -100,7 +100,7 @@ public class GameTests
     {
         // arrange
         // act
-        _game.Roll(10);
+        RollStrike();
         _game.Roll(3);
         _game.Roll(4);
 
@@ -110,6 +110,10 @@ public class GameTests
         _game.Score().Should().Be(24);
     }
 
+    private void RollStrike()
+    {
+        _game.Roll(10);
+    }
 
     private void RollsMany(int framesCount, int pins)
     {
